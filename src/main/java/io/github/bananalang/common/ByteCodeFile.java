@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -203,5 +204,48 @@ public final class ByteCodeFile {
     public void putCode(short code) {
         ensureCapacity(2);
         bytecode.putShort(code);
+    }
+
+    public void disassemble() {
+        disassemble(System.out);
+    }
+
+    public void disassemble(PrintStream out) {
+        out.println("Top-level:");
+        out.println("---------------------");
+        ByteBuffer reader = bytecode.duplicate().order(ByteOrder.LITTLE_ENDIAN);
+        for (reader.position(0); reader.position() < bytecode.position();) {
+            String s = Integer.toString(reader.position());
+            out.print(s);
+            for (int i = 0; i < 8 - s.length(); i++) {
+                out.print(" ");
+            }
+            short byteCodeType = reader.getShort();
+            switch (byteCodeType) {
+                case ByteCodes.LOAD_CONSTANT: {
+                    int index = reader.getInt();
+                    out.print("LOAD_CONSTANT  " + index + " (" + constantTable.get(index) + ")");
+                    break;
+                }
+                case ByteCodes.LOAD_BYTE: {
+                    byte value = reader.get();
+                    out.print("LOAD_BYTE      " + (((int)(value >>> 1) << 1) | (value & 1)));
+                    break;
+                }
+                case ByteCodes.LOAD_SBYTE: {
+                    byte value = reader.get();
+                    out.print("LOAD_SBYTE     " + value);
+                    break;
+                }
+                default:
+                    s = ByteCodes.getName(byteCodeType);
+                    out.print(s);
+                    for (int i = 0; i < 15 - s.length(); i++) {
+                        out.print(" ");
+                    }
+                    break;
+            }
+            out.println();
+        }
     }
 }

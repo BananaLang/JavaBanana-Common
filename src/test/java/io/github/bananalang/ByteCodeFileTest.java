@@ -30,5 +30,7 @@ public class ByteCodeFileTest {
 
         ByteCodeFile bbc2 = ByteCodeFile.read("example.bbc");
         System.out.println(bbc.getConstantTable().equals(bbc2.getConstantTable()) && Arrays.equals(bbc.getBytecode(), bbc2.getBytecode()));
+
+        bbc.disassemble();
     }
 }

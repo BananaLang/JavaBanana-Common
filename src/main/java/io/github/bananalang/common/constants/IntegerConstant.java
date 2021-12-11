@@ -20,6 +20,11 @@ public final class IntegerConstant extends BBCConstant {
     }
 
     @Override
+    public String toString() {
+        return value.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof IntegerConstant)) return false;
@@ -29,6 +34,6 @@ public final class IntegerConstant extends BBCConstant {
 
     @Override
     public int hashCode() {
-        return this.value.hashCode();
+        return value.hashCode();
     }
 }

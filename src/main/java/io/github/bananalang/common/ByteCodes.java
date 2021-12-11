@@ -18,4 +18,29 @@ public final class ByteCodes {
     // Disable instantiation
     private ByteCodes() {
     }
+
+    public static String getName(int code) {
+        switch (code) {
+            case EOF:
+                return "EOF";
+            case DEBUG_PRINT:
+                return "DEBUG_PRINT";
+            case LOAD_CONSTANT:
+                return "LOAD_CONSTANT";
+            case LOAD_BYTE:
+                return "LOAD_BYTE";
+            case LOAD_SBYTE:
+                return "LOAD_SBYTE";
+            case ADD:
+                return "ADD";
+            case SUB:
+                return "SUB";
+            case MUL:
+                return "MUL";
+            case DIV:
+                return "DIV";
+            default:
+                return "UNKNOWN_" + Integer.toHexString(Short.toUnsignedInt((short)code));
+        }
+    }
 }

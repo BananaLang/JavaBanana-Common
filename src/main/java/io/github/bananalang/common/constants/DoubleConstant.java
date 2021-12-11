@@ -16,6 +16,11 @@ public final class DoubleConstant extends BBCConstant {
     }
 
     @Override
+    public String toString() {
+        return Double.toString(value);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof DoubleConstant)) return false;
@@ -25,6 +30,6 @@ public final class DoubleConstant extends BBCConstant {
 
     @Override
     public int hashCode() {
-        return Double.hashCode(this.value);
+        return Double.hashCode(value);
     }
 }
