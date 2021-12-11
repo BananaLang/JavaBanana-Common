@@ -125,6 +125,10 @@ public final class ByteCodeFile {
                 case ByteCodes.SUB:
                 case ByteCodes.MUL:
                 case ByteCodes.DIV:
+                case ByteCodes.POP:
+                case ByteCodes.LOAD_0:
+                case ByteCodes.LOAD_1:
+                case ByteCodes.LOAD_2:
                     width = 0;
                     break;
                 case ByteCodes.LOAD_BYTE:

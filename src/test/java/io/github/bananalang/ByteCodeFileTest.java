@@ -26,6 +26,8 @@ public class ByteCodeFileTest {
         bbc.putCode(ByteCodes.MUL);
         bbc.putLoadConstant(3);
         bbc.putCode(ByteCodes.ADD);
+        bbc.putCode(ByteCodes.DEBUG_PRINT);
+        bbc.putCode(ByteCodes.POP);
         bbc.write("example.bbc");
 
         ByteCodeFile bbc2 = ByteCodeFile.read("example.bbc");

@@ -9,6 +9,10 @@ public final class ByteCodes {
     LOAD_CONSTANT = 2,
     LOAD_BYTE = 3,
     LOAD_SBYTE = 4,
+    POP = 5,
+    LOAD_0 = 6,
+    LOAD_1 = 7,
+    LOAD_2 = 8,
 
     ADD = 128,
     SUB = 129,
@@ -31,8 +35,16 @@ public final class ByteCodes {
                 return "LOAD_BYTE";
             case LOAD_SBYTE:
                 return "LOAD_SBYTE";
+            case POP:
+                return "POP";
             case ADD:
                 return "ADD";
+            case LOAD_0:
+                return "LOAD_0";
+            case LOAD_1:
+                return "LOAD_1";
+            case LOAD_2:
+                return "LOAD_2";
             case SUB:
                 return "SUB";
             case MUL:
