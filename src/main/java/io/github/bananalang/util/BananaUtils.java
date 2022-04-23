@@ -14,7 +14,7 @@ public final class BananaUtils {
         if (dotIndex == -1) {
             return "Module" + Character.toUpperCase(moduleName.charAt(0)) + moduleName.substring(1);
         }
-        return moduleName.substring(0, dotIndex)
+        return moduleName
             + ".Module"
             + Character.toUpperCase(moduleName.charAt(dotIndex + 1))
             + moduleName.substring(dotIndex + 2);
